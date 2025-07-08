@@ -15,11 +15,9 @@ const {
 
 router.get('/',getProDucts);
 
+router.post('/products', addProduct);
 
 router.get('/products/:id', viewOneProduct);
-
-
-router.post('/products', addProduct);
 
 
 router.patch('/products/:id', editProducts);

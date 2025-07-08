@@ -1,5 +1,24 @@
-http://localhost:5000/product
+GET http://localhost:5000/product/products/1698
 
 ###
-http://localhost:5000/product/products/5327
+POST http://localhost:5000/product/products
+    Content-Type: application/json
 
+{
+    "productName": "radio",
+    
+    "cost": "500"
+}
+
+###
+
+DELETE http://localhost:5000/product/products/ 1698
+       Content-Type: application/json
+
+###
+PATCH  http://localhost:5000/product/products/6814
+       Content-Type: application/json
+
+       {
+        "stockStatus":"out-of-stock"
+       }

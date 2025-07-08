@@ -6,6 +6,26 @@ const getProDucts = (req, res) => {
     res.json(products);
 }
 
+const addProduct = (req, res) => {
+  const { productName, cost } = req.body;
+
+  if (!productName || !cost) {
+    return res.status(400).json({ error: 'productName and cost are required' });
+  }
+
+  const newProduct = {
+    id: Math.floor(Math.random() * 10000),
+    name: productName,
+    cost,
+    stockStatus: 'in-stock',
+    createdAt: Date.now(),
+  };
+
+  products.push(newProduct);
+
+  res.status(201).json({ message: '✅ Product added', product: newProduct });
+};
+
 const viewOneProduct =(req, res) => {
     const id = parseInt(req.params.id);
     const product = products.find(p => p.id === id);
@@ -17,24 +37,8 @@ const viewOneProduct =(req, res) => {
     res.json(product);
 }
 
-const addProduct = (req, res) => {
-    const { name, cost } = req.body;
 
-    if (!name || !cost) {
-        return res.status(400).json({ message: 'Name and cost are required' });
-    }
 
-    const newProduct = {
-        id: Math.floor(Math.random() * 10000),
-        name,
-        cost,
-        stockStatus: 'in-stock',
-        createdAt: Date.now()
-    };
-
-    products.push(newProduct);
-    res.status(201).json({ message: 'Product added', product: newProduct });
-};
 
 
 const editProducts =(req, res) => {
@@ -91,10 +95,10 @@ const deleteProduct = (req, res) => {
 }
 
 module.exports = {
+addProduct,
 getProDucts,
 viewOneProduct,
 editProducts,
 editProductsstatus,
-addProduct,
- deleteProduct
+ deleteProduct,
 }
