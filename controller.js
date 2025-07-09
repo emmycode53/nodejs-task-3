@@ -6,24 +6,24 @@ const getProDucts = (req, res) => {
     res.json(products);
 }
 
-const addProduct = (req, res) => {
-  const { productName, cost } = req.body;
 
-  if (!productName || !cost) {
+const addProduct = (req, res) => { 
+  const { productName, productCost} = req.body;
+  if (!productName || !productCost){
     return res.status(400).json({ error: 'productName and cost are required' });
   }
 
   const newProduct = {
     id: Math.floor(Math.random() * 10000),
-    name: productName,
-    cost,
+    productName: productName,
+    productCost: productCost,
     stockStatus: 'in-stock',
     createdAt: Date.now(),
   };
 
   products.push(newProduct);
 
-  res.status(201).json({ message: '✅ Product added', product: newProduct });
+  res.status(201).json({ message: ' Product added', product: newProduct });
 };
 
 const viewOneProduct =(req, res) => {
@@ -43,15 +43,15 @@ const viewOneProduct =(req, res) => {
 
 const editProducts =(req, res) => {
     const id = parseInt(req.params.id);
-    const { name, cost } = req.body;
+    const { productName, productCost } = req.body;
 
     let found = false;
     let updatedProduct = null;
 
     for (let i = 0; i < products.length; i++) {
         if (products[i].id === id) {
-            if (name) products[i].name = name;
-            if (cost) products[i].cost = cost;
+            if (productName) products[i].productName = productName;
+            if (productCost) products[i].productCost = productCost;
 
             found = true;
             updatedProduct = products[i];
@@ -60,10 +60,10 @@ const editProducts =(req, res) => {
     }
 
     if (!found) {
-        return res.status(404).json({ message: '❌ Product not found' });
+        return res.status(404).json({ message: ' Product not found' });
     }
 
-    res.json({ message: '✅ Product updated', product: updatedProduct });
+    res.json({ message: 'Product updated', product: updatedProduct });
 }
 
 const editProductsstatus = (req, res) => {

@@ -1,14 +1,22 @@
-GET http://localhost:5000/product/products/1698
+GET http://localhost:5000/product
 
 ###
 POST http://localhost:5000/product/products
     Content-Type: application/json
 
-{
-    "productName": "radio",
+[
+    {
+    "productName": "Banana",
     
-    "cost": "500"
+    "productCost": "70"
+},
+{
+    "productName": "Banana",
+    
+    "productCost": 70
 }
+
+]
 
 ###
 
@@ -16,7 +24,7 @@ DELETE http://localhost:5000/product/products/ 1698
        Content-Type: application/json
 
 ###
-PATCH  http://localhost:5000/product/products/6814
+PATCH  http://localhost:5000/product/products/4196
        Content-Type: application/json
 
        {
