@@ -4,19 +4,13 @@ GET http://localhost:5000/product
 POST http://localhost:5000/product/products
     Content-Type: application/json
 
-[
-    {
-    "productName": "Banana",
-    
-    "productCost": "70"
-},
-{
-    "productName": "Banana",
-    
-    "productCost": 70
-}
 
-]
+    {
+        "productName": "television",
+        "cost": 2000
+    }
+
+
 
 ###
 
